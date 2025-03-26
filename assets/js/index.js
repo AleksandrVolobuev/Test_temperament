@@ -123,6 +123,9 @@ function resetTest() {
   // Восстанавливаем обработчик для "Следующего вопроса"
   nextButton.addEventListener("click", nextQuestion);
 }
-
+function closeApp() {
+  // Для закрытия окна браузера
+  window.close();
+}
 // Запускаем первый вопрос
 showQuestion();

@@ -17,9 +17,18 @@
       флегматик, сангвиник, холерик и меланхолик?
     </h2>
     <div class="quiz"></div>
-   
-    <button class="nextButton px-5 py-2 bg-green-500 text-white rounded-md text-lg transition-colors duration-200 mt-4 hover:bg-green-600 focus:ring-2 focus:ring-green-300" onclick="nextQuestion()">Ответить</button>
-
-    <p class="result" id="result"></p>
+    <button
+      class="nextButton px-5 py-2 bg-green-500 text-white rounded-md text-lg transition-colors duration-200 mt-4 hover:bg-green-600 focus:ring-2 focus:ring-green-300"
+      onclick="nextQuestion()"
+    >
+      Ответить
+    </button>
+    <button
+      class="closeButton px-5 py-2 bg-red-500 text-white rounded-md text-lg transition-colors duration-200 mt-4 hover:bg-red-600 focus:ring-2 focus:ring-red-300"
+      onclick="closeApp()"
+    >
+      Закрыть приложение
+    </button>
+    <p id="result"></p>
   </body>
 </html>
