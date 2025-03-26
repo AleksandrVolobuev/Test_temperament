@@ -2,13 +2,14 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
   margin: 20px;
-  font-size: 18px; /* Увеличивает размер текста */
+  font-size: 18px;
+  /* Увеличивает размер текста */
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #ae4477, #0aff5e, #102bff);
   background-size: 500% 500%;
   animation: gradient 30s ease infinite;
- 
+
   display: flex;
-  justify-content:  space-around;
+  justify-content: space-around;
   align-items: center;
   height: 100vh;
   flex-direction: column;
@@ -16,53 +17,36 @@ body {
 
 
 @keyframes gradient {
-0% {
-  background-position: 0% 50%;
+  0% {
+    background-position: 0% 50%;
+  }
+
+  25% {
+    background-position: 25% 75%;
+  }
+
+  50% {
+    background-position: 50% 100%;
+  }
+
+  75% {
+    background-position: 25% 75%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
-25% {
-  background-position: 25% 75%;
-}
-50% {
-  background-position: 50% 100%;
-}
-75% {
-  background-position: 25% 75%;
-}
-100% {
-  background-position: 0% 50%;
-}
-}
+
 .question {
   margin-bottom: 15px;
 }
 
-.result {
-  font-weight: bold;
-  margin-top: 20px;
-  font-size: 20px; /* Чуть увеличиваем размер шрифта для результата */
-}
-
-.button {
-  padding: 10px 20px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 18px; /* Увеличивает размер текста кнопки */
-  transition: all 0.2s ease-in-out;
-  margin-top: 15px;
-}
-
-button:hover {
-  background-color: #2240eb;
-  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
-  transform: scale(0.98);
-}
-
 input[type="radio"] {
-  transform: scale(1.5); /* Увеличивает радиокнопки */
-  margin: 10px; /* Добавляем отступы между радиокнопками */
+  transform: scale(1.5);
+  /* Увеличивает радиокнопки */
+  margin: 10px;
+  /* Добавляем отступы между радиокнопками */
 }
 
 /* Дополнительные стили для лейблов, чтобы они выглядели лучше */
@@ -71,6 +55,7 @@ label {
   font-size: 26px;
   margin: 5px 0;
 }
+
 p {
   font-size: 26px;
   margin: 5px 0;

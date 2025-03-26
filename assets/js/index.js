@@ -28,36 +28,47 @@ const shuffleAnswers = (question) => {
   // Сохраняем ответы и баллы в массив объектов
   const answersWithScores = question.answers.map((answer, index) => ({
     answer,
-    score: question.scores[index]
+    score: question.scores[index],
   }));
-  
+
   // Перемешиваем ответы и их баллы
   answersWithScores.sort(() => Math.random() - 0.5);
-  
-  // Обновляем вопрос с перемешанными ответами и баллами
-  question.answers = answersWithScores.map(item => item.answer);
-  question.scores = answersWithScores.map(item => item.score);
-};
 
+  // Обновляем вопрос с перемешанными ответами и баллами
+  question.answers = answersWithScores.map((item) => item.answer);
+  question.scores = answersWithScores.map((item) => item.score);
+};
+questions;
 // Функция для отображения текущего вопроса
 function showQuestion() {
   // Получаем текущий вопрос из массива questions
   const q = questions[currentQuestion];
-  
+
   // Перемешиваем ответы для текущего вопроса
   shuffleAnswers(q);
 
   // Заполняем контейнер текстом вопроса
   quizContainer.innerHTML = `<p>${q.text}</p>`;
 
+  // Создаём контейнер для ответов с `flex`
+  let answersHTML = `<div class="answers-container flex flex-col gap-2">`;
+
   // Перебираем все возможные ответы на вопрос
   q.answers.forEach((answer, i) => {
-    // Добавляем радиокнопку для каждого ответа с его значением (баллом)
-    quizContainer.innerHTML += `<label>
-          <input type='radio' class="w-5 h-5 text-blue-500 focus:ring-blue-400" name='answer' value='${q.scores[i]}'> ${answer}
-      </label><br>`;
+    // Добавляем радиокнопку в контейнер
+    answersHTML += `<label class="flex items-center gap-2">
+          <input type='radio' class="w-5 h-5 text-blue-500 focus:ring-blue-400" name='answer' value='${q.scores[i]}'> 
+          ${answer}
+      </label>`;
   });
+
+  // Закрываем `div`
+  answersHTML += `</div>`;
+
+  // Вставляем в `quizContainer`
+  quizContainer.innerHTML += answersHTML;
 }
+
 
 // Функция обработки ответа и перехода к следующему вопросу
 function nextQuestion() {
@@ -66,6 +77,7 @@ function nextQuestion() {
   const selected = document.querySelector("input[name='answer']:checked");
   if (selected) {
     score += parseInt(selected.value);
+    console.log(score);
     currentQuestion++;
 
     if (currentQuestion < questions.length) {
@@ -76,29 +88,25 @@ function nextQuestion() {
   }
 }
 
-
 // Функция для показа итогового результата теста
 function showResult() {
-  // Определяем результат в зависимости от количества набранных баллов
-  let resultText =
-    score >= questions.length * 3.5
-      ? answers[0]
-      : score >= questions.length * 2.5
-      ? answers[1]
-      : score >= questions.length * 1.5
-      ? answers[2]
-      : answers[3];
+  const totalCategories = answers.length; // Количество типов
+  const step = (questions.length * 3) / totalCategories; // Интервал
 
-  // Выводим результат на экран
-  quizContainer.innerHTML = `<p class='result'>${resultText}</p>`;
+  // Переворачиваем шкалу (чем больше баллов, тем ближе к 0-й позиции)
+  let index = totalCategories - 1 - Math.floor(score / step);
 
-  // Изменяем текст кнопки на "Пройти тест еще раз"
+  // Гарантируем, что индекс не выходит за границы массива
+  index = Math.max(0, Math.min(index, totalCategories - 1));
+
+  let resultText = answers[index];
+
+  // Вывод результата
+  quizContainer.innerHTML = `<p class="font-bold mt-5 text-xl">${resultText}</p>`;
+
+  // Меняем кнопку
   nextButton.textContent = "Пройти тест еще раз";
-
-  // Убираем обработчик для перехода к следующему вопросу
   nextButton.removeEventListener("click", nextQuestion);
-
-  // Добавляем обработчик для сброса теста
   nextButton.addEventListener("click", resetTest);
 }
 
