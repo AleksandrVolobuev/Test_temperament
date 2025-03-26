@@ -51,7 +51,7 @@ function showQuestion() {
   quizContainer.innerHTML = `<p>${q.text}</p>`;
 
   // Создаём контейнер для ответов с `flex`
-  let answersHTML = `<div class="answers-container flex flex-col gap-2 px-4 py-2 sm:px-6 md:px-8">`;
+  let answersHTML = `<div class="answers-container flex flex-col gap-6 px-10 py-6">`;
 
   // Перебираем все возможные ответы на вопрос
   q.answers.forEach((answer, i) => {
