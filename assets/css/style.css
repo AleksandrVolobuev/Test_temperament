@@ -2,14 +2,13 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
   margin: 20px;
-  font-size: 18px;
-  /* Увеличивает размер текста */
+  font-size: 18px; /* Увеличивает размер текста */
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #ae4477, #0aff5e, #102bff);
   background-size: 500% 500%;
   animation: gradient 30s ease infinite;
-
+ 
   display: flex;
-  justify-content: space-around;
+  justify-content:  space-around;
   align-items: center;
   height: 100vh;
   flex-direction: column;
@@ -17,43 +16,24 @@ body {
 
 
 @keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  25% {
-    background-position: 25% 75%;
-  }
-
-  50% {
-    background-position: 50% 100%;
-  }
-
-  75% {
-    background-position: 25% 75%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+0% {
+  background-position: 0% 50%;
 }
-
+25% {
+  background-position: 25% 75%;
+}
+50% {
+  background-position: 50% 100%;
+}
+75% {
+  background-position: 25% 75%;
+}
+100% {
+  background-position: 0% 50%;
+}
+}
 .question {
   margin-bottom: 15px;
-}
-
-input[type="radio"] {
-  transform: scale(1.5);
-  /* Увеличивает радиокнопки */
-  margin: 10px;
-  /* Добавляем отступы между радиокнопками */
-}
-
-/* Дополнительные стили для лейблов, чтобы они выглядели лучше */
-label {
-  display: block;
-  font-size: 26px;
-  margin: 5px 0;
 }
 
 p {

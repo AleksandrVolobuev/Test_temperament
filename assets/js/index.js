@@ -56,10 +56,10 @@ function showQuestion() {
   // Перебираем все возможные ответы на вопрос
   q.answers.forEach((answer, i) => {
     // Добавляем радиокнопку в контейнер
-    answersHTML += `<label class="flex items-center gap-2">
-          <input type='radio' class="w-5 h-5 text-blue-500 focus:ring-blue-400" name='answer' value='${q.scores[i]}'> 
-          ${answer}
-      </label>`;
+    answersHTML += `<label class="flex items-center gap-2 text-left ml-0 block text-xl my-2">
+    <input type='radio' class="w-7 h-7 text-blue-500 focus:ring-blue-400" name='answer' value='${q.scores[i]}'> 
+    ${answer}
+</label>`;
   });
 
   // Закрываем `div`
@@ -68,7 +68,6 @@ function showQuestion() {
   // Вставляем в `quizContainer`
   quizContainer.innerHTML += answersHTML;
 }
-
 
 // Функция обработки ответа и перехода к следующему вопросу
 function nextQuestion() {
